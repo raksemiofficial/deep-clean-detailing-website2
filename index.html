@@ -72,6 +72,53 @@
     .stars{color:var(--gold-light);letter-spacing:1px}.fade{animation:fadeIn .7s ease-out}
     @keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     @media (max-width:980px){.hero,.promo,.packages,.addons,.reasons,.reviews,.booking{grid-template-columns:1fr}.mini-grid,.grid2{grid-template-columns:1fr}nav{display:none}}
+    @media (max-width: 768px) {
+  .hero,
+  .booking,
+  .addons,
+  .reasons,
+  .reviews,
+  .mini-grid,
+  .grid2,
+  .packages,
+  .contact-boxes {
+    grid-template-columns: 1fr !important;
+  }
+
+  .btn {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.1 !important;
+  }
+
+  h2 {
+    font-size: 1.7rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .price-small div:last-child,
+  #summary-price,
+  #featured-price {
+    font-size: 1.5rem !important;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 16px !important;
+  }
+
+  .range-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+}
   </style>
 </head>
 <body>
