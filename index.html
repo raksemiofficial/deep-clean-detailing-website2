@@ -168,7 +168,16 @@ function renderSelectors(){$("service-selector").innerHTML=services.map((service
 function renderPackages(){$("packages").innerHTML=services.map((service)=>`<div class="card package"><div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start"><div><div class="eyebrow" style="font-size:.72rem">${service.badge}</div><h3 style="margin:10px 0 0;font-size:1.7rem">${service.name}</h3></div><div class="price-small"><div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(212,175,55,.7)">Price</div><div style="font-size:1.7rem;font-weight:800">$${service.price}</div></div></div><p class="muted" style="margin-top:18px">${service.description}</p><div class="time-pill">⏱ Estimated time: ${service.time}</div><div style="margin-top:18px">${service.features.map((feature)=>`<div class="feature"><span class="check">✓</span><span>${feature}</span></div>`).join("")}</div><a class="btn gold" href="#booking" onclick="renderFeatured('${service.id}')" style="width:100%;margin-top:22px;display:inline-block;text-align:center;text-decoration:none">Book ${service.name}</a></button></div>`).join("");}
 function runSelfChecks(){console.assert(calculateDeposit(60)===15,"25% deposit for $60 should be $15");console.assert(calculateDeposit(90)===23,"25% deposit for $90 should round to $23");console.assert(calculateDeposit(160)===40,"25% deposit for $160 should be $40");console.assert(getConditionLabel(1)==="Not bad","Slider start label should be Not bad");console.assert(getConditionLabel(5)==="Needs major TLC","Slider max label should be Needs major TLC");console.assert(services.length===3,"There should be three main service packages");console.assert(addOns.length===4,"There should be four add-ons");}
 renderSelectors();renderPackages();renderAddOns();renderFeatured("medium");runSelfChecks();
-$("condition-range").addEventListener("input",(e)=>{$("condition-label").textContent=getConditionLabel(e.target.value);});
+const conditionRange = $("condition-range");
+const conditionLabel = $("condition-label");
+
+function updateConditionLabel() {
+  conditionLabel.textContent = getConditionLabel(conditionRange.value);
+}
+
+conditionRange.addEventListener("input", updateConditionLabel);
+conditionRange.addEventListener("change", updateConditionLabel);
+updateConditionLabel();
 
 $("booking-form").addEventListener("submit",(e)=>{e.preventDefault();const form=new FormData(e.target);const required=["name","phone","address","vehicle","date","time"];const missing=required.filter((field)=>!String(form.get(field)||"").trim());const condition=$("condition-range").value;const status=$("status");if(missing.length){status.style.display="block";status.textContent=`Please fill out: ${missing.join(", ")}`;return;}status.style.display="block";const service=services.find((s)=>s.id===form.get("service"))||services[1];status.textContent=`Booking request submitted for ${service.name} — $${service.price}. Vehicle condition noted as: ${getConditionLabel(condition)}. Thank you for reaching out to Deep Clean Detailing LLC. Appointments are not guaranteed until accepted.`;});
 </script>
