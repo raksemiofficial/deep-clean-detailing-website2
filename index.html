@@ -182,5 +182,8 @@ updateConditionLabel();
 
 $("booking-form").addEventListener("submit",(e)=>{e.preventDefault();const form=new FormData(e.target);const required=["name","phone","address","vehicle","date","time"];const missing=required.filter((field)=>!String(form.get(field)||"").trim());const condition=$("condition-range").value;const status=$("status");if(missing.length){status.style.display="block";status.textContent=`Please fill out: ${missing.join(", ")}`;return;}status.style.display="block";const service=services.find((s)=>s.id===form.get("service"))||services[1];status.textContent=`Booking request submitted for ${service.name} — $${service.price}. Vehicle condition noted as: ${getConditionLabel(condition)}. Thank you for reaching out to Deep Clean Detailing LLC. Appointments are not guaranteed until accepted.`;});
 </script>
+<div style="margin-top:24px;text-align:center;color:rgba(255,255,255,.6);font-size:.9rem">
+  © 2026 Deep Clean Detailing LLC. All rights reserved. Premium mobile detailing proudly serving Madison, WI and surrounding areas.
+</div>
 </body>
 </html>
