@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deep Clean Detailing LLC</title>
+  <meta name="description" content="Luxury mobile detailing in Madison, WI and surrounding areas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#060606; --panel:rgba(255,255,255,.05); --panel-border:rgba(212,175,55,.15);
+      --gold:#d4af37; --gold-light:#f4d27a; --text:#fff; --muted:rgba(255,255,255,.72); --muted-2:rgba(255,255,255,.56);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    .bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+    .orb{position:absolute;border-radius:999px;filter:blur(80px)}
+    .orb.one{left:0;top:0;width:28rem;height:28rem;background:rgba(212,175,55,.18)}
+    .orb.two{right:0;top:12rem;width:24rem;height:24rem;background:rgba(244,210,122,.08)}
+    .orb.three{left:35%;bottom:0;width:20rem;height:20rem;background:rgba(212,175,55,.14)}
+    .container{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 20px 80px}
+    header{padding:28px 0 10px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-size:1.15rem;letter-spacing:.12em;font-weight:700;color:var(--gold-light)}
+    .brand-sub{font-size:.72rem;text-transform:uppercase;letter-spacing:.35em;color:rgba(212,175,55,.7);margin-top:4px}
+    nav a{color:rgba(255,255,255,.76);text-decoration:none;margin-left:26px;font-size:.95rem}
+    nav a:hover{color:var(--gold-light)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;padding-top:32px;align-items:center}
+    .pill{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid var(--panel-border);background:var(--panel);border-radius:999px;color:rgba(255,255,255,.84);font-size:.92rem}
+    h1{font-size:clamp(2.6rem,7vw,4.7rem);line-height:1.02;margin:18px 0 0;letter-spacing:-.03em}
+    .lead{max-width:700px;font-size:1.1rem;color:var(--muted);margin-top:22px}
+    .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+    .btn{display:inline-block;text-decoration:none;border:none;cursor:pointer;border-radius:18px;padding:14px 22px;font-weight:700;transition:.18s transform ease,.18s background ease;font-size:.95rem}
+    .btn:hover{transform:scale(1.02)}
+    .btn.gold{background:var(--gold);color:#000}.btn.ghost{background:var(--panel);color:#fff;border:1px solid rgba(212,175,55,.2)}
+    .mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+    .card{background:var(--panel);border:1px solid var(--panel-border);border-radius:28px;box-shadow:0 18px 50px rgba(0,0,0,.35);backdrop-filter:blur(16px)}
+    .mini-card{padding:18px}.iconbox,.small-icon{width:42px;height:42px;border-radius:16px;background:rgba(212,175,55,.15);display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-weight:800}
+    .showcase{padding:10px}.showcase-inner{border-radius:24px;border:1px solid var(--panel-border);background:linear-gradient(135deg, rgba(212,175,55,.12), rgba(255,255,255,.05), transparent);padding:28px}
+    .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.3em;color:rgba(212,175,55,.7)}
+    .price-badge{background:var(--gold);color:#000;border-radius:16px;padding:10px 14px;text-align:right}
+    .price-badge .big{font-size:1.7rem;font-weight:800}
+    .feature{display:flex;gap:10px;margin-top:10px;color:rgba(255,255,255,.86);font-size:.95rem}
+    .check{color:var(--gold-light);font-weight:900}
+    .selector{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .selector button{border-radius:16px;padding:12px 14px;border:1px solid var(--panel-border);background:var(--panel);color:#fff;cursor:pointer}
+    .selector button.active{background:var(--gold);color:#000;border-color:var(--gold-light)}
+    section{padding-top:82px}.section-title{max-width:760px}
+    .section-title h2{font-size:clamp(2rem,5vw,3.4rem);margin:8px 0 0;line-height:1.06}
+    .section-title p{color:var(--muted);margin-top:14px;font-size:1.05rem}
+    .promo{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:34px}.promo-side{padding:24px}
+    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+    .package{padding:26px}.price-small{border:1px solid var(--panel-border);background:var(--panel);border-radius:16px;padding:10px 14px;text-align:right}
+    .time-pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--panel-border);border-radius:999px;padding:8px 12px;font-size:.82rem;color:rgba(255,255,255,.67);margin-top:18px}
+    .addons,.reasons,.reviews{display:grid;gap:22px;margin-top:34px}
+    .addons{grid-template-columns:repeat(4,1fr)} .reasons,.reviews{grid-template-columns:repeat(3,1fr)}
+    .pad{padding:24px}.price-gold{font-size:1.8rem;color:var(--gold-light);font-weight:800;margin-top:14px}
+    .booking{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px}
+    .form-card,.summary-card{padding:28px}.summary-box{padding:22px;margin-top:24px}
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    label{display:block;margin-bottom:8px;font-size:.92rem;color:rgba(255,255,255,.72)}
+    input,select,textarea{width:100%;border-radius:16px;border:1px solid var(--panel-border);background:var(--panel);color:#fff;padding:14px 15px;outline:none;font:inherit}
+    input:focus,select:focus,textarea:focus{border-color:rgba(244,210,122,.4)} textarea{min-height:120px;resize:vertical}
+    .note{padding:14px 16px;border-radius:16px;border:1px solid var(--panel-border);background:rgba(212,175,55,.08);color:rgba(255,255,255,.82);font-size:.92rem}
+    .status{padding:14px 16px;border-radius:16px;border:1px solid var(--panel-border);background:var(--panel);color:rgba(255,255,255,.84);font-size:.92rem}
+    .range-row{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:8px}
+    .range-value{color:var(--gold-light);font-weight:700;font-size:.95rem}
+    input[type="range"]{padding:0;accent-color:var(--gold)} .muted{color:var(--muted)} .muted2{color:var(--muted-2)}
+    .contact-boxes{display:grid;gap:12px}.contact-item{display:flex;gap:12px;align-items:center;padding:14px 16px}
+    .stars{color:var(--gold-light);letter-spacing:1px}.fade{animation:fadeIn .7s ease-out}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @media (max-width:980px){.hero,.promo,.packages,.addons,.reasons,.reviews,.booking{grid-template-columns:1fr}.mini-grid,.grid2{grid-template-columns:1fr}nav{display:none}}
+  </style>
+</head>
+<body>
+<div class="bg"><div class="orb one"></div><div class="orb two"></div><div class="orb three"></div></div>
+<div class="container">
+<header><div class="nav"><div><div class="brand">DEEP CLEAN DETAILING LLC</div><div class="brand-sub">Mobile Detailing</div></div><nav><a href="#services">Services</a><a href="#special">Promo</a><a href="#booking">Book</a><a href="#contact">Contact</a></nav></div></header>
+
+<section class="hero">
+<div class="fade">
+<div class="pill">✨ Mobile detailing with pride, patience, and real attention to detail</div>
+<h1>A deeper clean for the vehicle you rely on every day.</h1>
+<p class="lead">Deep Clean Detailing LLC brings professional mobile detailing straight to your home or job site. This is the kind of work people pay for because they want their vehicle cleaned with more care, more patience, and more detail than a rushed basic cleanup can offer.</p>
+<div class="actions"><a class="btn gold" href="#booking">Request an Appointment</a><a class="btn ghost" href="#services">View Packages</a></div>
+<div class="mini-grid">
+<div class="card mini-card"><div class="iconbox">📍</div><div style="margin-top:12px;font-size:.95rem">Mobile Service</div></div>
+<div class="card mini-card"><div class="iconbox">✓</div><div style="margin-top:12px;font-size:.95rem">Careful Work</div></div>
+<div class="card mini-card"><div class="iconbox">⏱</div><div style="margin-top:12px;font-size:.95rem">Easy Request</div></div>
+</div></div>
+
+<div class="fade"><div class="card showcase"><div class="showcase-inner">
+<div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start">
+<div><div class="eyebrow">Featured Package</div><h3 id="featured-name" style="margin:10px 0 0;font-size:1.8rem">Signature Detail</h3></div>
+<div class="price-badge"><div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.2em">Starting at</div><div class="big" id="featured-price">$90</div></div>
+</div>
+<p id="featured-description" class="muted" style="margin-top:18px"></p>
+<div id="featured-features" style="margin-top:10px"></div>
+<div class="selector" id="service-selector"></div>
+</div></div></div>
+</section>
+
+<section id="special"><div class="card promo">
+<div><div class="eyebrow">Startup Promo</div><h2 style="font-size:clamp(2rem,5vw,3.3rem);line-height:1.06;margin:14px 0 0">Free Essential Detail for the first 10 customers <span style="color:rgba(244,210,122,.8)">with paid add-ons.</span></h2><p class="muted" style="max-width:700px;margin-top:18px">This promo is meant to help new customers try the service with less risk while still choosing the add-ons they need most. It is a strong way to introduce our work, build trust, and make a great first impression from the start.</p></div>
+<div class="card promo-side"><div style="display:flex;gap:14px;align-items:center"><div class="small-icon">★</div><div><div class="muted2" style="font-size:.9rem">Limited startup promo</div><div style="font-size:1.6rem;font-weight:700">Free Essential Detail</div></div></div>
+<div style="margin-top:24px;color:rgba(255,255,255,.82);font-size:.95rem;display:grid;gap:10px"><div>• Limited to the first 10 accepted bookings</div><div>• Includes a free Essential Detail with paid add-ons</div><div>• Appointments are not guaranteed until accepted</div></div>
+<a class="btn gold" href="#booking" style="margin-top:22px">Claim Your Spot</a></div></div></section>
+
+<section id="services"><div class="section-title"><div class="eyebrow">Packages</div><h2>Detailing packages designed to leave your vehicle looking cared for, refreshed, and elevated.</h2><p>Each package is built to give your vehicle a cleaner finish, a fresher interior, and the kind of detailed care that helps it feel noticeably better the moment you step back in.</p></div><div class="packages" id="packages"></div></section>
+
+<section><div class="section-title"><div class="eyebrow">Add-Ons</div><h2>Good extras for customers who want more done in one visit.</h2><p>These pair well with the startup promo and give customers a reason to upgrade beyond the free Essential Detail.</p></div><div class="addons" id="addons"></div></section>
+
+<section><div class="reasons">
+<div class="card pad"><div class="small-icon">🚗</div><h3>Mobile Convenience</h3><p class="muted">We come to you so your vehicle can be cleaned at home, work, or wherever makes sense for your day.</p></div>
+<div class="card pad"><div class="small-icon">💧</div><h3>Care You Can See</h3><p class="muted">Every package is built around the details people notice most, from cleaner glass to fresher interior surfaces.</p></div>
+<div class="card pad"><div class="small-icon">💳</div><h3>Simple Booking Process</h3><p class="muted">Customers can choose a package, request a time, and send their information in one place without confusion.</p></div>
+</div></section>
+
+<section id="booking"><div class="booking">
+<div class="card summary-card"><div class="section-title"><div class="eyebrow">Booking</div><h2>Request your appointment</h2><p>Choose a package, send your vehicle details, and request a time that works for you. Appointments are not guaranteed until accepted.</p></div>
+<div class="card summary-box"><div class="eyebrow">Selected package</div>
+<div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-top:12px">
+<div><h3 id="summary-name" style="margin:0;font-size:1.7rem">Signature Detail</h3><div id="summary-badge" class="muted2" style="margin-top:6px;font-size:.92rem">Most Popular • 1.5–2 hrs</div></div>
+<div style="text-align:right"><div class="muted2" style="font-size:.9rem">Package total</div><div id="summary-price" style="font-size:2rem;font-weight:800">$90</div></div>
+</div>
+<div class="note" style="margin-top:18px">Suggested deposit after approval: <strong id="summary-deposit" style="color:var(--gold-light)">$23</strong></div>
+<button class="btn gold" type="button" id="payment-btn" style="width:100%;margin-top:18px">Payment / Deposit Link</button>
+</div></div>
+
+<div class="card form-card"><form id="booking-form">
+<div class="grid2"><div><label>Full Name</label><input name="name" placeholder="Your full name" /></div><div><label>Phone</label><input name="phone" placeholder="(555) 555-5555" /></div></div>
+<div class="grid2" style="margin-top:16px"><div><label>Email</label><input name="email" placeholder="dcdetailingsupport@gmail.com" /></div><div><label>Vehicle</label><input name="vehicle" placeholder="Year, make, and model" /></div></div>
+<div style="margin-top:16px"><label>Service Address</label><input name="address" placeholder="Customer address" /></div>
+<div style="margin-top:16px"><label>Choose Package</label><select name="service" id="service-select"></select></div>
+<div class="grid2" style="margin-top:16px"><div><label>Preferred Date</label><input type="date" name="date" /></div><div><label>Preferred Time</label><input type="time" name="time" /></div></div>
+<div style="margin-top:16px"><div class="range-row"><label style="margin:0">How dirty is the vehicle?</label><div class="range-value" id="condition-label">Average use</div></div><input type="range" id="condition-range" min="1" max="5" step="1" value="3" /><div style="display:flex;justify-content:space-between;color:rgba(255,255,255,.45);font-size:.78rem;margin-top:8px"><span>Not bad</span><span>Needs major TLC</span></div><p class="muted2" style="font-size:.9rem;margin-top:10px">This helps us get a better idea of the vehicle’s condition before we review the booking request.</p></div>
+<div style="margin-top:16px"><label>Notes</label><textarea name="notes" placeholder="Pet hair, stains, apartment access, parking notes, or anything we should know"></textarea></div>
+<div class="note" style="margin-top:16px">Note: Appointment requests are reviewed first. Appointments are not guaranteed until accepted.</div>
+<div id="status" class="status" style="margin-top:16px;display:none"></div>
+<button class="btn gold" type="submit" style="margin-top:16px">Submit Booking Request</button>
+</form></div></div></section>
+
+<section><div class="section-title"><div class="eyebrow">Reviews</div><h2>Service that feels personal, not rushed.</h2><p>As you start getting customers, these can be replaced with real reviews that speak to your reliability, care, and quality of work.</p></div>
+<div class="reviews">
+<div class="card pad"><div class="stars">★★★★★</div><p class="muted">“Showed up on time, worked hard, and treated my SUV like it mattered. The whole experience felt professional and respectful.”</p><strong>James R.</strong></div>
+<div class="card pad"><div class="stars">★★★★★</div><p class="muted">“It did not feel rushed at all. My car looked cleaner, felt fresher, and the booking process was simple.”</p><strong>Alyssa T.</strong></div>
+<div class="card pad"><div class="stars">★★★★★</div><p class="muted">“Super convenient and easy to work with. I liked that they came to me and still gave my car real attention.”</p><strong>Marcus D.</strong></div>
+</div></section>
+
+<section id="contact"><div class="card pad" style="padding:34px"><div class="booking" style="grid-template-columns:1fr auto">
+<div><div class="eyebrow">Contact</div><h2 style="font-size:clamp(2rem,5vw,3.3rem);line-height:1.06;margin:14px 0 0">Ready to get your ride cleaned up?</h2><p class="muted" style="max-width:700px;margin-top:18px">Deep Clean Detailing LLC is built to give customers a clean, trustworthy place to learn about your services, request appointments, and get in touch.</p></div>
+<div class="contact-boxes"><div class="card contact-item"><div class="small-icon">☎</div><span>Business phone goes here</span></div><div class="card contact-item"><div class="small-icon">📍</div><span>Madison, WI and surrounding areas</span></div><div class="card contact-item"><div class="small-icon">✉</div><span>dcdetailingsupport@gmail.com</span></div></div>
+</div></div></section>
+</div>
+
+<script>
+const services=[
+{id:"light",name:"Essential Detail",price:60,badge:"Clean Maintenance",description:"This is not just a quick wipe down. The Essential Detail is for customers who want their vehicle cleaned the right way with real attention to the areas people usually miss. We vacuum thoroughly, wipe down surfaces with care, clean the glass properly, and use brushes and detail tools to work through vents, seams, cracks, and tighter interior spaces so the vehicle feels fresher, cleaner, and better cared for when we are done.",features:["Gentle exterior hand wash","Wheel face and tire cleaning","Streak-free glass cleaned inside and out","Interior vacuum for seats, floors, mats, and edges","Dashboard, console, cupholders, and door panels cleaned","Brush work in cracks, seams, vents, and tighter crevice areas"],time:"45–60 min"},
+{id:"medium",name:"Signature Detail",price:90,badge:"Most Popular",description:"The Signature Detail is for vehicles that need a more complete reset. This package goes beyond the basics and gives more time to the areas that collect dust, grime, crumbs, fingerprints, and everyday buildup. We use brushes, towels, and detail tools to work through cupholders, trim lines, seams, vents, and other hard-to-reach spots so the interior feels noticeably cleaner and the vehicle looks much more put together overall.",features:["Everything in the Essential Detail","More detailed vacuum throughout cabin and trunk","Door jamb wipe down","Interior plastics cleaned and dressed","Seat surfaces cleaned and refreshed","Extra brush and crevice work throughout the cabin plus spray wax and tire shine finish"],time:"1.5–2 hrs"},
+{id:"heavy",name:"Deep Clean Detail",price:160,badge:"Full Interior Reset",description:"This is the service for vehicles that need serious attention. The Deep Clean Detail is built for heavier dirt, buildup, pet hair, neglected interior areas, and the kind of mess that needs more than a surface-level cleanup. We spend real time working through crevices, trim, panels, problem areas, and buildup with a more hands-on process so the vehicle does not just look better on the surface — it feels brought back to life.",features:["Everything in the Signature Detail","Deep wipe down of harder-to-reach interior areas","Heavier grime and buildup removal","Crevice, trim, panel, and brush detail work throughout the vehicle","Spot treatment for light stains","Extra service time for heavily used vehicles, neglected interiors, and problem areas"],time:"2.5–4 hrs"}];
+const addOns=[{name:"Pet Hair Removal",price:25},{name:"Seat Spot Treatment",price:20},{name:"Spray Wax Upgrade",price:15},{name:"Odor Refresh",price:20}];
+const $=(id)=>document.getElementById(id);
+function calculateDeposit(price){return Math.max(0,Math.round(Number(price||0)*0.25));}
+function getConditionLabel(value){const n=Number(value);if(n<=1)return"Not bad";if(n===2)return"Lightly dirty";if(n===3)return"Average use";if(n===4)return"Pretty dirty";return"Needs major TLC";}
+function renderFeatured(serviceId){const service=services.find((s)=>s.id===serviceId)||services[1];$("featured-name").textContent=service.name;$("featured-price").textContent=`$${service.price}`;$("featured-description").textContent=service.description;$("summary-name").textContent=service.name;$("summary-badge").textContent=`${service.badge} • ${service.time}`;$("summary-price").textContent=`$${service.price}`;$("summary-deposit").textContent=`$${calculateDeposit(service.price)}`;$("service-select").value=service.id;$("featured-features").innerHTML=service.features.map((feature)=>`<div class="feature"><span class="check">✓</span><span>${feature}</span></div>`).join("");document.querySelectorAll("#service-selector button").forEach((btn)=>btn.classList.toggle("active",btn.dataset.id===service.id));}
+function renderSelectors(){$("service-selector").innerHTML=services.map((service)=>`<button type="button" data-id="${service.id}">${service.name}</button>`).join("");document.querySelectorAll("#service-selector button").forEach((btn)=>btn.addEventListener("click",()=>renderFeatured(btn.dataset.id)));$("service-select").innerHTML=services.map((service)=>`<option value="${service.id}">${service.name} — $${service.price}</option>`).join("");$("service-select").addEventListener("change",(e)=>renderFeatured(e.target.value));}
+function renderPackages(){$("packages").innerHTML=services.map((service)=>`<div class="card package"><div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start"><div><div class="eyebrow" style="font-size:.72rem">${service.badge}</div><h3 style="margin:10px 0 0;font-size:1.7rem">${service.name}</h3></div><div class="price-small"><div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(212,175,55,.7)">Price</div><div style="font-size:1.7rem;font-weight:800">$${service.price}</div></div></div><p class="muted" style="margin-top:18px">${service.description}</p><div class="time-pill">⏱ Estimated time: ${service.time}</div><div style="margin-top:18px">${service.features.map((feature)=>`<div class="feature"><span class="check">✓</span><span>${feature}</span></div>`).join("")}</div><button class="btn gold" data-book="${service.id}" style="width:100%;margin-top:22px">Book ${service.name}</button></div>`).join("");document.querySelectorAll("[data-book]").forEach((btn)=>btn.addEventListener("click",()=>{renderFeatured(btn.dataset.book);document.getElementById("booking").scrollIntoView({behavior:"smooth"});}));}
+function renderAddOns(){$("addons").innerHTML=addOns.map((item)=>`<div class="card pad"><div class="small-icon">✦</div><h3 style="margin-top:18px">${item.name}</h3><p class="muted2" style="margin-top:8px">Popular upgrade</p><div class="price-gold">+$${item.price}</div></div>`).join("");}
+function runSelfChecks(){console.assert(calculateDeposit(60)===15,"25% deposit for $60 should be $15");console.assert(calculateDeposit(90)===23,"25% deposit for $90 should round to $23");console.assert(calculateDeposit(160)===40,"25% deposit for $160 should be $40");console.assert(getConditionLabel(1)==="Not bad","Slider start label should be Not bad");console.assert(getConditionLabel(5)==="Needs major TLC","Slider max label should be Needs major TLC");console.assert(services.length===3,"There should be three main service packages");console.assert(addOns.length===4,"There should be four add-ons");}
+renderSelectors();renderPackages();renderAddOns();renderFeatured("medium");runSelfChecks();
+$("condition-range").addEventListener("input",(e)=>{$("condition-label").textContent=getConditionLabel(e.target.value);});
+$("payment-btn").addEventListener("click",()=>{const service=services.find((s)=>s.id===$("service-select").value)||services[1];const status=$("status");status.style.display="block";status.textContent=`Payment link goes here once you connect Stripe, Square, or PayPal. Suggested deposit for ${service.name}: $${calculateDeposit(service.price)}. Appointments are not guaranteed until accepted.`;});
+$("booking-form").addEventListener("submit",(e)=>{e.preventDefault();const form=new FormData(e.target);const required=["name","phone","address","vehicle","date","time"];const missing=required.filter((field)=>!String(form.get(field)||"").trim());const condition=$("condition-range").value;const status=$("status");if(missing.length){status.style.display="block";status.textContent=`Please fill out: ${missing.join(", ")}`;return;}status.style.display="block";const service=services.find((s)=>s.id===form.get("service"))||services[1];status.textContent=`Booking request submitted for ${service.name} — $${service.price}. Vehicle condition noted as: ${getConditionLabel(condition)}. Thank you for reaching out to Deep Clean Detailing LLC. Appointments are not guaranteed until accepted.`;});
+</script>
+</body>
+</html>
